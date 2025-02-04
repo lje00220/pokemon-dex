@@ -11,7 +11,7 @@ const MyPokeBall = ({ selected, setSelected }) => {
     height: "200px",
     backgroundColor: "white",
     borderRadius: "10px",
-    margin: "10px auto 0",
+    margin: "20px auto",
     boxShadow: "0px 3px 3px #d8d8d8",
     textAlign: "center",
   };
@@ -46,25 +46,38 @@ const MyPokeBall = ({ selected, setSelected }) => {
     justifyContent: "center",
   };
 
-  const myBall = [...selected];
+  // let myBall = [...selected];
+  const myBall = [...selected, ...Array(6 - selected.length).fill(0)];
 
   const removeHandler = (e) => {
-    console.log(e.target.value);
+    const targetID = e.target.value;
+    // console.log("targetID", targetID);
+    const newArr = selected.filter((x) => x.id != targetID);
+    console.log(newArr);
+    setSelected([...newArr]);
   };
+
   return (
     <div style={containerStyle}>
       {myBall.map((ball) => {
-        return (
-          <div key={ball.id} style={cardStyle}>
-            {/* <img style={imgStyle} src="src/assets/Poke_Ball.webp" alt="" /> */}
-            <img src={ball.img} alt="" style={imgStyle} />
-            <div style={nameStyle}>{ball.name}</div>
-            <p style={pStyle}>No. {ball.id}</p>
-            <button value={ball.id} onClick={removeHandler}>
-              삭제
-            </button>
-          </div>
-        );
+        if (ball == 0) {
+          return (
+            <div key={ball.id} style={divStyle}>
+              <img style={ballStyle} src="src/assets/Poke_Ball.webp" alt="" />
+            </div>
+          );
+        } else {
+          return (
+            <div key={ball.id} style={cardStyle}>
+              <img src={ball.img} alt="" style={imgStyle} />
+              <div style={nameStyle}>{ball.name}</div>
+              <p style={pStyle}>No. {ball.id}</p>
+              <button value={ball.id} onClick={removeHandler}>
+                삭제
+              </button>
+            </div>
+          );
+        }
       })}
     </div>
   );
