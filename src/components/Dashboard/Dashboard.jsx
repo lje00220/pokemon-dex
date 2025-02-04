@@ -1,6 +1,6 @@
 import MyPokeBall from "./MyPokeBall";
 
-export const Dashboard = () => {
+export const Dashboard = ({ selected, setSelected }) => {
   const divStyle = {
     display: "flex",
     flexDirection: "column",
@@ -21,7 +21,7 @@ export const Dashboard = () => {
   return (
     <div style={divStyle}>
       <h2 style={h2Style}>나만의 포켓몬</h2>
-      <MyPokeBall />
+      <MyPokeBall selected={selected} setSelected={setSelected} />
     </div>
   );
 };

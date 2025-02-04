@@ -1,6 +1,6 @@
 import { PokemonCard } from "./PokemonCard";
 
-export const PokemonList = () => {
+export const PokemonList = ({ selected, setSelected }) => {
   const divStyle = {
     width: "85%",
     height: "auto",
@@ -11,7 +11,7 @@ export const PokemonList = () => {
   };
   return (
     <div style={divStyle}>
-      <PokemonCard />
+      <PokemonCard selected={selected} setSelected={setSelected} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import AddButton from "./AddButton";
 import MOCK_DATA from "./mockData";
 
-export const PokemonCard = () => {
+export const PokemonCard = ({ selected, setSelected }) => {
   const cardStyle = {
     width: "150px",
     height: "230px",
@@ -46,7 +46,13 @@ export const PokemonCard = () => {
             <img src={card.img_url} alt="" style={imgStyle} />
             <div style={nameStyle}>{card.korean_name}</div>
             <p style={pStyle}>No. {card.id}</p>
-            <AddButton />
+            <AddButton
+              selected={selected}
+              setSelected={setSelected}
+              id={card.id}
+              img={card.img_url}
+              name={card.korean_name}
+            />
           </div>
         );
       })}

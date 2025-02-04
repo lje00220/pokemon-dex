@@ -1,30 +1,68 @@
-const MyPokeBall = () => {
-  const currentBall = [1, 2, 3, 4, 5, 6];
-  const imgStyle = {
+const MyPokeBall = ({ selected, setSelected }) => {
+  // const currentBall = [1, 2, 3, 4, 5, 6];
+  const ballStyle = {
     display: "flex",
     width: "60px",
     height: "60px",
     margin: "20px auto", // 간격 하드코딩 수정하기
   };
+  const cardStyle = {
+    width: "120px",
+    height: "200px",
+    backgroundColor: "white",
+    borderRadius: "10px",
+    margin: "10px auto 0",
+    boxShadow: "0px 3px 3px #d8d8d8",
+    textAlign: "center",
+  };
   const divStyle = {
     backgroundColor: "white",
-    width: "100px",
-    height: "100px",
+    width: "120px",
+    height: "120px",
     border: "2px dashed rgb(201, 201, 201)",
     borderRadius: "10px",
     margin: "0 50px",
+  };
+
+  const pStyle = {
+    fontSize: "13px",
+    color: "grey",
+  };
+
+  const imgStyle = {
+    width: "60%",
+    height: "40%",
+    margin: "10px 0",
+  };
+
+  const nameStyle = {
+    fontSize: "15px",
+    fontWeight: "bold",
+    marginTop: "5px",
   };
 
   const containerStyle = {
     display: "flex",
     justifyContent: "center",
   };
+
+  const myBall = [...selected];
+
+  const removeHandler = (e) => {
+    console.log(e.target.value);
+  };
   return (
     <div style={containerStyle}>
-      {currentBall.map((ball) => {
+      {myBall.map((ball) => {
         return (
-          <div key={ball} style={divStyle}>
-            <img style={imgStyle} src="src/assets/Poke_Ball.webp" alt="" />
+          <div key={ball.id} style={cardStyle}>
+            {/* <img style={imgStyle} src="src/assets/Poke_Ball.webp" alt="" /> */}
+            <img src={ball.img} alt="" style={imgStyle} />
+            <div style={nameStyle}>{ball.name}</div>
+            <p style={pStyle}>No. {ball.id}</p>
+            <button value={ball.id} onClick={removeHandler}>
+              삭제
+            </button>
           </div>
         );
       })}
