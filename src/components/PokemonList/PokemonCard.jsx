@@ -50,7 +50,7 @@ export const PokemonCard = ({ selected, setSelected }) => {
             style={cardStyle}
             onClick={(e) => {
               if (e.target.className !== "btn") {
-                navigate(`/details/${card.id}`);
+                navigate(`/dex/value?id=${card.id}`);
               }
             }}
           >

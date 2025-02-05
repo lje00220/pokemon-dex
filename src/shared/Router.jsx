@@ -9,7 +9,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="dex" element={<Dex />} />
-        <Route path="details/:id" element={<Detail />} />
+        <Route path="dex/value" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

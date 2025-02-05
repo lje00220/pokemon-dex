@@ -1,11 +1,13 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import MOCK_DATA from "../PokemonList/mockData";
 
 const PokemonDetail = () => {
-  const params = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const targetId = queryParams.get("id");
   const navigate = useNavigate();
 
-  const targetPokemon = MOCK_DATA.find((card) => card.id == params.id);
+  const targetPokemon = MOCK_DATA.find((card) => card.id == targetId);
 
   const containerStyle = {
     width: "60%",

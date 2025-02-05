@@ -51,9 +51,7 @@ const MyPokeBall = ({ selected, setSelected }) => {
 
   const removeHandler = (e) => {
     const targetID = e.target.value;
-    // console.log("targetID", targetID);
     const newArr = selected.filter((x) => x.id != targetID);
-    console.log(newArr);
     setSelected([...newArr]);
   };
 
@@ -63,7 +61,7 @@ const MyPokeBall = ({ selected, setSelected }) => {
       {myBall.map((ball) => {
         if (ball == 0) {
           return (
-            <div key={ball.id} style={divStyle}>
+            <div key={crypto.randomUUID()} style={divStyle}>
               <img style={ballStyle} src="src/assets/Poke_Ball.webp" alt="" />
             </div>
           );
@@ -74,7 +72,7 @@ const MyPokeBall = ({ selected, setSelected }) => {
               style={cardStyle}
               onClick={(e) => {
                 if (e.target.className !== "btn") {
-                  navigate(`/details/${ball.id}`);
+                  navigate(`/dex/value?id=${ball.id}`);
                 }
               }}
             >
