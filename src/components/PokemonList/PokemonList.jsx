@@ -1,17 +1,19 @@
+import styled from "styled-components";
 import { PokemonCard } from "./PokemonCard";
 
 export const PokemonList = ({ selected, setSelected }) => {
-  const divStyle = {
-    width: "85%",
-    height: "auto",
-    margin: "40px auto 0",
-    backgroundColor: "rgb(248, 248, 248)",
-    borderRadius: "10px",
-    overflow: "hidden",
-  };
   return (
-    <div style={divStyle}>
+    <Container>
       <PokemonCard selected={selected} setSelected={setSelected} />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  width: 85%;
+  height: auto;
+  margin: 40px auto 0;
+  background-color: rgb(248, 248, 248);
+  border-radius: 10px;
+  overflow: hidden;
+`;

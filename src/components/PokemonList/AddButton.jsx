@@ -1,14 +1,6 @@
-const AddButton = ({ selected, setSelected, id, img, name }) => {
-  const buttonStyle = {
-    backgroundColor: "red",
-    color: "white",
-    border: "none",
-    width: "40px",
-    height: "25px",
-    borderRadius: "7px",
-    margin: "10px 0",
-  };
+import styled from "styled-components";
 
+const AddButton = ({ selected, setSelected, id, img, name }) => {
   const addHandler = () => {
     let isInclude = false;
     if (selected.length === 6) {
@@ -30,10 +22,19 @@ const AddButton = ({ selected, setSelected, id, img, name }) => {
     }
   };
   return (
-    <button className="btn" style={buttonStyle} value={id} onClick={addHandler}>
+    <ButtonStyle className="btn" value={id} onClick={addHandler}>
       추가
-    </button>
+    </ButtonStyle>
   );
 };
 
+const ButtonStyle = styled.button`
+  background-color: red;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 25px;
+  border-radius: 7px;
+  margin: 10px 0;
+`;
 export default AddButton;

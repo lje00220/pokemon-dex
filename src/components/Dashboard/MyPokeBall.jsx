@@ -1,52 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const MyPokeBall = ({ selected, setSelected }) => {
-  const ballStyle = {
-    display: "flex",
-    width: "60px",
-    height: "60px",
-    margin: "20px auto", // 간격 하드코딩 수정하기
-  };
-  const cardStyle = {
-    width: "120px",
-    height: "200px",
-    backgroundColor: "white",
-    borderRadius: "10px",
-    margin: "20px auto",
-    boxShadow: "0px 3px 3px #d8d8d8",
-    textAlign: "center",
-  };
-  const divStyle = {
-    backgroundColor: "white",
-    width: "120px",
-    height: "120px",
-    border: "2px dashed rgb(201, 201, 201)",
-    borderRadius: "10px",
-    margin: "0 50px",
-  };
-
-  const pStyle = {
-    fontSize: "13px",
-    color: "grey",
-  };
-
-  const imgStyle = {
-    width: "60%",
-    height: "40%",
-    margin: "10px 0",
-  };
-
-  const nameStyle = {
-    fontSize: "15px",
-    fontWeight: "bold",
-    marginTop: "5px",
-  };
-
-  const containerStyle = {
-    display: "flex",
-    justifyContent: "center",
-  };
-
   const myBall = [...selected, ...Array(6 - selected.length).fill(0)];
 
   const removeHandler = (e) => {
@@ -57,37 +12,82 @@ const MyPokeBall = ({ selected, setSelected }) => {
 
   const navigate = useNavigate();
   return (
-    <div style={containerStyle}>
+    <ContainerStyle>
       {myBall.map((ball) => {
         if (ball == 0) {
           return (
-            <div key={crypto.randomUUID()} style={divStyle}>
-              <img style={ballStyle} src="src/assets/Poke_Ball.webp" alt="" />
-            </div>
+            <DivStyle key={crypto.randomUUID()}>
+              <BallStyle src="src/assets/Poke_Ball.webp" alt="" />
+            </DivStyle>
           );
         } else {
           return (
-            <div
+            <CardStyle
               key={ball.id}
-              style={cardStyle}
               onClick={(e) => {
                 if (e.target.className !== "btn") {
                   navigate(`/dex/value?id=${ball.id}`);
                 }
               }}
             >
-              <img src={ball.img} alt="" style={imgStyle} />
-              <div style={nameStyle}>{ball.name}</div>
-              <p style={pStyle}>No. {ball.id}</p>
+              <ImgStyle src={ball.img} alt="" />
+              <NameStyle>{ball.name}</NameStyle>
+              <PStyle>No. {ball.id}</PStyle>
               <button className="btn" value={ball.id} onClick={removeHandler}>
                 삭제
               </button>
-            </div>
+            </CardStyle>
           );
         }
       })}
-    </div>
+    </ContainerStyle>
   );
 };
+
+const BallStyle = styled.img`
+  display: flex;
+  width: 60px;
+  height: 60px;
+  margin: 20px auto; // 간격 하드코딩 수정하기
+`;
+const CardStyle = styled.div`
+  width: 120px;
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0px 3px 3px #d8d8d8;
+  text-align: center;
+`;
+const DivStyle = styled.div`
+  background-color: white;
+  width: 120px;
+  height: 120px;
+  border: 2px dashed rgb(201, 201, 201);
+  border-radius: 10px;
+  margin: 0 50px;
+`;
+
+const PStyle = styled.p`
+  font-size: 13px;
+  color: grey;
+`;
+
+const ImgStyle = styled.img`
+  width: 60%;
+  height: 40%;
+  margin: 10px 0;
+`;
+
+const NameStyle = styled.div`
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 5px;
+`;
+
+const ContainerStyle = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 export default MyPokeBall;

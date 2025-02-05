@@ -1,62 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import AddButton from "./AddButton";
 import MOCK_DATA from "./mockData";
+import styled from "styled-components";
 
 export const PokemonCard = ({ selected, setSelected }) => {
-  const cardStyle = {
-    width: "150px",
-    height: "230px",
-    backgroundColor: "white",
-    borderRadius: "10px",
-    marginTop: "20px",
-    boxShadow: "0px 3px 3px #d8d8d8",
-    textAlign: "center",
-  };
-
-  const containerStyle = {
-    display: "grid",
-    placeItems: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    gridTemplateColumns: "repeat(auto-fit, minmax(150px, auto))",
-    gridGap: "20px",
-  };
-
-  const pStyle = {
-    fontSize: "13px",
-    color: "grey",
-  };
-
-  const imgStyle = {
-    width: "60%",
-    height: "40%",
-    margin: "10px 0",
-  };
-
-  const nameStyle = {
-    fontSize: "15px",
-    fontWeight: "bold",
-    marginTop: "5px",
-  };
-
   const navigate = useNavigate();
 
   return (
-    <div style={containerStyle}>
+    <ContainerStyle>
       {MOCK_DATA.map((card) => {
         return (
-          <div
+          <CardStyle
             key={card.id}
-            style={cardStyle}
             onClick={(e) => {
               if (e.target.className !== "btn") {
                 navigate(`/dex/value?id=${card.id}`);
               }
             }}
           >
-            <img src={card.img_url} alt="" style={imgStyle} />
-            <div style={nameStyle}>{card.korean_name}</div>
-            <p style={pStyle}>No. {card.id}</p>
+            <ImgStyle src={card.img_url} alt="" />
+            <NameStyle>{card.korean_name}</NameStyle>
+            <PStyle>No. {card.id}</PStyle>
             <AddButton
               selected={selected}
               setSelected={setSelected}
@@ -64,9 +28,45 @@ export const PokemonCard = ({ selected, setSelected }) => {
               img={card.img_url}
               name={card.korean_name}
             />
-          </div>
+          </CardStyle>
         );
       })}
-    </div>
+    </ContainerStyle>
   );
 };
+
+const CardStyle = styled.div`
+  width: 150px;
+  height: 230px;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 3px 3px #d8d8d8;
+  text-align: center;
+`;
+
+const ContainerStyle = styled.div`
+  display: grid;
+  place-items: center;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  grid-gap: 20px;
+`;
+
+const PStyle = styled.p`
+  font-size: 13px;
+  color: grey;
+`;
+
+const ImgStyle = styled.img`
+  width: 60%;
+  height: 40%;
+  margin: 10px 0;
+`;
+
+const NameStyle = styled.div`
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 5px;
+`;
