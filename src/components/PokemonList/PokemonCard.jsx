@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import AddButton from "./AddButton";
 import MOCK_DATA from "./mockData";
 
@@ -38,11 +39,21 @@ export const PokemonCard = ({ selected, setSelected }) => {
     marginTop: "5px",
   };
 
+  const navigate = useNavigate();
+
   return (
     <div style={containerStyle}>
       {MOCK_DATA.map((card) => {
         return (
-          <div key={card.id} style={cardStyle}>
+          <div
+            key={card.id}
+            style={cardStyle}
+            onClick={(e) => {
+              if (e.target.className !== "btn") {
+                navigate(`/details/${card.id}`);
+              }
+            }}
+          >
             <img src={card.img_url} alt="" style={imgStyle} />
             <div style={nameStyle}>{card.korean_name}</div>
             <p style={pStyle}>No. {card.id}</p>

@@ -30,7 +30,7 @@ const AddButton = ({ selected, setSelected, id, img, name }) => {
     }
   };
   return (
-    <button style={buttonStyle} value={id} onClick={addHandler}>
+    <button className="btn" style={buttonStyle} value={id} onClick={addHandler}>
       추가
     </button>
   );

@@ -1,5 +1,6 @@
+import { useNavigate } from "react-router-dom";
+
 const MyPokeBall = ({ selected, setSelected }) => {
-  // const currentBall = [1, 2, 3, 4, 5, 6];
   const ballStyle = {
     display: "flex",
     width: "60px",
@@ -46,7 +47,6 @@ const MyPokeBall = ({ selected, setSelected }) => {
     justifyContent: "center",
   };
 
-  // let myBall = [...selected];
   const myBall = [...selected, ...Array(6 - selected.length).fill(0)];
 
   const removeHandler = (e) => {
@@ -57,6 +57,7 @@ const MyPokeBall = ({ selected, setSelected }) => {
     setSelected([...newArr]);
   };
 
+  const navigate = useNavigate();
   return (
     <div style={containerStyle}>
       {myBall.map((ball) => {
@@ -68,11 +69,19 @@ const MyPokeBall = ({ selected, setSelected }) => {
           );
         } else {
           return (
-            <div key={ball.id} style={cardStyle}>
+            <div
+              key={ball.id}
+              style={cardStyle}
+              onClick={(e) => {
+                if (e.target.className !== "btn") {
+                  navigate(`/details/${ball.id}`);
+                }
+              }}
+            >
               <img src={ball.img} alt="" style={imgStyle} />
               <div style={nameStyle}>{ball.name}</div>
               <p style={pStyle}>No. {ball.id}</p>
-              <button value={ball.id} onClick={removeHandler}>
+              <button className="btn" value={ball.id} onClick={removeHandler}>
                 삭제
               </button>
             </div>
