@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { PokemonContext } from "../../context/PokemonContext";
+import { toast } from "react-toastify";
 
 const AddButton = ({ card, type }) => {
   const { selected, setSelected } = useContext(PokemonContext);
@@ -13,7 +14,7 @@ const AddButton = ({ card, type }) => {
   const addHandler = () => {
     let isInclude = false;
     if (selected.length === 6) {
-      alert("6개 초과");
+      toast.error("포켓몬은 6개까지만 선택할 수 있어요.");
       return;
     }
 
@@ -25,7 +26,7 @@ const AddButton = ({ card, type }) => {
     });
 
     if (isInclude) {
-      alert("이미 소유한 포켓몬입니다.");
+      toast.error("이미 선택한 포켓몬입니다!");
     } else {
       setSelected([
         ...selected,

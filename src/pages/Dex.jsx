@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dashboard } from "../components/Dashboard/Dashboard";
 import { PokemonList } from "../components/PokemonList/PokemonList";
-import { useEffect } from "react";
 import { CardContext, PokemonContext } from "../context/PokemonContext";
+import { ToastContainer, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Dex = () => {
   // 로컬스토리지 초기값
@@ -21,6 +22,18 @@ const Dex = () => {
         <Dashboard />
         <PokemonList />
       </CardContext.Provider>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
     </PokemonContext.Provider>
   );
 };

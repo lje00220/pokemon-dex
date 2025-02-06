@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useNavigator } from "../components/hooks";
 
 const Home = () => {
+  const navigator = useNavigate();
   return (
     <DivStyle>
       <ImgStyle src="src/assets/International_Pokémon_logo.png" alt="" />
-      <BtnStyle onClick={useNavigator("/dex")}>포켓몬 도감 시작하기</BtnStyle>
+      <BtnStyle onClick={() => navigator("/dex")}>
+        포켓몬 도감 시작하기
+      </BtnStyle>
     </DivStyle>
   );
 };
