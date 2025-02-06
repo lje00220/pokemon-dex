@@ -1,27 +1,28 @@
+import styled from "styled-components";
 import MyPokeBall from "./MyPokeBall";
 
-export const Dashboard = () => {
-  const divStyle = {
-    display: "flex",
-    flexDirection: "column",
-    width: "85%",
-    height: "auto",
-    backgroundColor: "rgb(248, 248, 248)",
-    borderRadius: "10px",
-    margin: "0 auto",
-    overflow: "hidden",
-    padding: "20px 0",
-  };
-
-  const h2Style = {
-    margin: "30px auto",
-    color: "red",
-  };
-
+export const Dashboard = ({ selected, setSelected }) => {
   return (
-    <div style={divStyle}>
-      <h2 style={h2Style}>나만의 포켓몬</h2>
-      <MyPokeBall />
-    </div>
+    <DivStyle>
+      <H2Style>나만의 포켓몬</H2Style>
+      <MyPokeBall selected={selected} setSelected={setSelected} />
+    </DivStyle>
   );
 };
+
+const DivStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  height: auto;
+  background-color: rgb(248, 248, 248);
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 20px 0;
+`;
+
+const H2Style = styled.h2`
+  margin: 30px auto;
+  color: red;
+`;

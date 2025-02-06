@@ -1,35 +1,79 @@
-const MyPokeBall = () => {
-  const currentBall = [1, 2, 3, 4, 5, 6];
-  const imgStyle = {
-    display: "flex",
-    width: "60px",
-    height: "60px",
-    margin: "20px auto", // 간격 하드코딩 수정하기
-  };
-  const divStyle = {
-    backgroundColor: "white",
-    width: "100px",
-    height: "100px",
-    border: "2px dashed rgb(201, 201, 201)",
-    borderRadius: "10px",
-    margin: "0 50px",
-  };
+// import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { PokemonCard } from "../PokemonList/PokemonCard";
 
-  const containerStyle = {
-    display: "flex",
-    justifyContent: "center",
-  };
+const MyPokeBall = ({ selected, setSelected }) => {
+  const myBall = [...selected, ...Array(6 - selected.length).fill(0)];
+
   return (
-    <div style={containerStyle}>
-      {currentBall.map((ball) => {
-        return (
-          <div key={ball} style={divStyle}>
-            <img style={imgStyle} src="src/assets/Poke_Ball.webp" alt="" />
-          </div>
-        );
+    <ContainerStyle>
+      {myBall.map((ball) => {
+        if (ball == 0) {
+          return (
+            <DivStyle key={crypto.randomUUID()}>
+              <BallStyle src="src/assets/Poke_Ball.webp" alt="" />
+            </DivStyle>
+          );
+        } else {
+          return (
+            <PokemonCard
+              key={ball.id}
+              card={ball}
+              setSelected={setSelected}
+              selected={selected}
+              btn="deleted"
+            />
+          );
+        }
       })}
-    </div>
+    </ContainerStyle>
   );
 };
 
+const BallStyle = styled.img`
+  display: flex;
+  width: 60px;
+  height: 60px;
+  margin: 20px auto; // 간격 하드코딩 수정하기
+`;
+const DivStyle = styled.div`
+  background-color: white;
+  width: 120px;
+  height: 120px;
+  border: 2px dashed rgb(201, 201, 201);
+  border-radius: 10px;
+  margin: 0 50px;
+`;
+
+const ContainerStyle = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export default MyPokeBall;
+
+// const CardStyle = styled.div`
+//   width: 120px;
+//   height: 200px;
+//   background-color: white;
+//   border-radius: 10px;
+//   margin: 20px auto;
+//   box-shadow: 0px 3px 3px #d8d8d8;
+//   text-align: center;
+// `;
+// const PStyle = styled.p`
+//   font-size: 13px;
+//   color: grey;
+// `;
+
+// const ImgStyle = styled.img`
+//   width: 60%;
+//   height: 40%;
+//   margin: 10px 0;
+// `;
+
+// const NameStyle = styled.div`
+//   font-size: 15px;
+//   font-weight: bold;
+//   margin-top: 5px;
+// `;

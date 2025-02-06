@@ -1,55 +1,57 @@
+import { useNavigate } from "react-router-dom";
 import AddButton from "./AddButton";
-import MOCK_DATA from "./mockData";
+import styled from "styled-components";
 
-export const PokemonCard = () => {
-  const cardStyle = {
-    width: "150px",
-    height: "230px",
-    backgroundColor: "white",
-    borderRadius: "10px",
-    marginTop: "20px",
-    boxShadow: "0px 3px 3px #d8d8d8",
-    textAlign: "center",
-  };
-
-  const containerStyle = {
-    display: "grid",
-    placeItems: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    gridTemplateColumns: "repeat(auto-fit, minmax(150px, auto))",
-    gridGap: "20px",
-  };
-
-  const pStyle = {
-    fontSize: "13px",
-    color: "grey",
-  };
-
-  const imgStyle = {
-    width: "60%",
-    height: "40%",
-    margin: "10px 0",
-  };
-
-  const nameStyle = {
-    fontSize: "15px",
-    fontWeight: "bold",
-    marginTop: "5px",
-  };
+export const PokemonCard = ({ selected, setSelected, card, type }) => {
+  const navigate = useNavigate();
 
   return (
-    <div style={containerStyle}>
-      {MOCK_DATA.map((card) => {
-        return (
-          <div key={card.id} style={cardStyle}>
-            <img src={card.img_url} alt="" style={imgStyle} />
-            <div style={nameStyle}>{card.korean_name}</div>
-            <p style={pStyle}>No. {card.id}</p>
-            <AddButton />
-          </div>
-        );
-      })}
-    </div>
+    <CardStyle
+      key={card.id}
+      onClick={(e) => {
+        if (!e.target.className.includes("btn")) {
+          navigate(`/dex/value?id=${card.id}`);
+        }
+      }}
+    >
+      <ImgStyle src={card.img_url} alt="" />
+      <NameStyle>{card.korean_name}</NameStyle>
+      <PStyle>No. {card.id}</PStyle>
+      <AddButton
+        selected={selected}
+        setSelected={setSelected}
+        id={card.id}
+        img_url={card.img_url}
+        korean_name={card.korean_name}
+        type={type}
+      />
+    </CardStyle>
   );
 };
+
+const CardStyle = styled.div`
+  width: 150px;
+  height: 230px;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0px 3px 3px #d8d8d8;
+  text-align: center;
+`;
+
+const PStyle = styled.p`
+  font-size: 13px;
+  color: grey;
+`;
+
+const ImgStyle = styled.img`
+  width: 60%;
+  height: 40%;
+  margin: 10px 0;
+`;
+
+const NameStyle = styled.div`
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 5px;
+`;
