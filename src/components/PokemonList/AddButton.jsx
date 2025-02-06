@@ -1,6 +1,19 @@
 import styled from "styled-components";
 
-const AddButton = ({ selected, setSelected, id, img, name }) => {
+const AddButton = ({
+  selected,
+  setSelected,
+  id,
+  img_url,
+  korean_name,
+  type,
+}) => {
+  const removeHandler = (e) => {
+    const targetID = e.target.value;
+    const newArr = selected.filter((x) => x.id != targetID);
+    setSelected([...newArr]);
+  };
+
   const addHandler = () => {
     let isInclude = false;
     if (selected.length === 6) {
@@ -18,12 +31,16 @@ const AddButton = ({ selected, setSelected, id, img, name }) => {
     if (isInclude) {
       alert("이미 소유한 포켓몬입니다.");
     } else {
-      setSelected([...selected, { img, id, name }]);
+      setSelected([...selected, { img_url, id, korean_name }]);
     }
   };
   return (
-    <ButtonStyle className="btn" value={id} onClick={addHandler}>
-      추가
+    <ButtonStyle
+      className="btn"
+      value={id}
+      onClick={type === "added" ? addHandler : removeHandler}
+    >
+      {type === "added" ? "추가" : "삭제"}
     </ButtonStyle>
   );
 };
