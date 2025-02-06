@@ -2,12 +2,11 @@ import { useNavigate } from "react-router-dom";
 import AddButton from "./AddButton";
 import styled from "styled-components";
 
-export const PokemonCard = ({ selected, setSelected, card, type }) => {
+export const PokemonCard = ({ card, type }) => {
   const navigate = useNavigate();
 
   return (
     <CardStyle
-      key={card.id}
       onClick={(e) => {
         if (!e.target.className.includes("btn")) {
           navigate(`/dex/value?id=${card.id}`);
@@ -17,14 +16,7 @@ export const PokemonCard = ({ selected, setSelected, card, type }) => {
       <ImgStyle src={card.img_url} alt="" />
       <NameStyle>{card.korean_name}</NameStyle>
       <PStyle>No. {card.id}</PStyle>
-      <AddButton
-        selected={selected}
-        setSelected={setSelected}
-        id={card.id}
-        img_url={card.img_url}
-        korean_name={card.korean_name}
-        type={type}
-      />
+      <AddButton type={type} card={card} />
     </CardStyle>
   );
 };

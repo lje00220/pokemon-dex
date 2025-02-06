@@ -1,8 +1,11 @@
-// import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { PokemonCard } from "../PokemonList/PokemonCard";
+import { useContext } from "react";
+import { PokemonContext } from "../../context/PokemonContext";
 
-const MyPokeBall = ({ selected, setSelected }) => {
+const MyPokeBall = () => {
+  const { selected } = useContext(PokemonContext);
+
   const myBall = [...selected, ...Array(6 - selected.length).fill(0)];
 
   return (
@@ -15,15 +18,7 @@ const MyPokeBall = ({ selected, setSelected }) => {
             </DivStyle>
           );
         } else {
-          return (
-            <PokemonCard
-              key={ball.id}
-              card={ball}
-              setSelected={setSelected}
-              selected={selected}
-              btn="deleted"
-            />
-          );
+          return <PokemonCard key={ball.id} card={ball} btn="deleted" />;
         }
       })}
     </ContainerStyle>

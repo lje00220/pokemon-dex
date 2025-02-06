@@ -1,13 +1,9 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { PokemonContext } from "../../context/PokemonContext";
 
-const AddButton = ({
-  selected,
-  setSelected,
-  id,
-  img_url,
-  korean_name,
-  type,
-}) => {
+const AddButton = ({ card, type }) => {
+  const { selected, setSelected } = useContext(PokemonContext);
   const removeHandler = (e) => {
     const targetID = e.target.value;
     const newArr = selected.filter((x) => x.id != targetID);
@@ -23,7 +19,7 @@ const AddButton = ({
 
     // 만약 이미 있다면 alert
     selected.forEach((x) => {
-      if (x.id === id) {
+      if (x.id === card.id) {
         isInclude = true;
       }
     });
@@ -31,13 +27,16 @@ const AddButton = ({
     if (isInclude) {
       alert("이미 소유한 포켓몬입니다.");
     } else {
-      setSelected([...selected, { img_url, id, korean_name }]);
+      setSelected([
+        ...selected,
+        { img_url: card.img_url, id: card.id, korean_name: card.korean_name },
+      ]);
     }
   };
   return (
     <ButtonStyle
       className="btn"
-      value={id}
+      value={card.id}
       onClick={type === "added" ? addHandler : removeHandler}
     >
       {type === "added" ? "추가" : "삭제"}

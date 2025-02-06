@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import MyPokeBall from "./MyPokeBall";
 
-export const Dashboard = ({ selected, setSelected }) => {
+export const Dashboard = () => {
   return (
     <DivStyle>
       <H2Style>나만의 포켓몬</H2Style>
-      <MyPokeBall selected={selected} setSelected={setSelected} />
+      <MyPokeBall />
     </DivStyle>
   );
 };

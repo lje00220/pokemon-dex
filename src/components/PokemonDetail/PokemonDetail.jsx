@@ -6,7 +6,7 @@ const PokemonDetail = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const targetId = queryParams.get("id");
-  const navigate = useNavigate();
+  const navigator = useNavigate();
 
   const targetPokemon = MOCK_DATA.find((card) => card.id == targetId);
 
@@ -16,7 +16,7 @@ const PokemonDetail = () => {
       <NameStyle>{targetPokemon.korean_name}</NameStyle>
       <PStyle>타입: {targetPokemon.types}</PStyle>
       <PStyle>{targetPokemon.description}</PStyle>
-      <BtnStyle onClick={() => navigate("/dex")}>뒤로 가기</BtnStyle>
+      <BtnStyle onClick={() => navigator("/dex")}>뒤로 가기</BtnStyle>
     </ContainerStyle>
   );
 };

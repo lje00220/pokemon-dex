@@ -2,20 +2,12 @@ import styled from "styled-components";
 import { PokemonCard } from "./PokemonCard";
 import MOCK_DATA from "./mockData";
 
-export const PokemonList = ({ selected, setSelected }) => {
+export const PokemonList = () => {
   return (
     <Container>
       <ContainerStyle>
         {MOCK_DATA.map((card) => {
-          return (
-            <PokemonCard
-              key={card.id}
-              card={card}
-              selected={selected}
-              setSelected={setSelected}
-              type="added"
-            />
-          );
+          return <PokemonCard key={card.id} card={card} type="added" />;
         })}
       </ContainerStyle>
     </Container>
