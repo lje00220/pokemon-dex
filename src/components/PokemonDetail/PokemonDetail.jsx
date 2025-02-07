@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import MOCK_DATA from "../PokemonList/mockData";
 import styled from "styled-components";
+import AddButton from "../PokemonList/AddButton";
 
 const PokemonDetail = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const PokemonDetail = () => {
       <NameStyle>{targetPokemon.korean_name}</NameStyle>
       <PStyle>타입: {targetPokemon.types}</PStyle>
       <PStyle>{targetPokemon.description}</PStyle>
+      <AddButton card={targetPokemon} type="added" />
       <BtnStyle onClick={() => navigator("/dex")}>뒤로 가기</BtnStyle>
     </ContainerStyle>
   );

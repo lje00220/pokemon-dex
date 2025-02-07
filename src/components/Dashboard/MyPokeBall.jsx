@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import { PokemonCard } from "../PokemonList/PokemonCard";
-import { useContext } from "react";
-import { PokemonContext } from "../../context/PokemonContext";
+import { useSelector } from "react-redux";
 
 const MyPokeBall = () => {
-  const { selected } = useContext(PokemonContext);
-
-  const myBall = [...selected, ...Array(6 - selected.length).fill(0)];
+  const selected = useSelector((state) => state.pokemon);
+  // const myBall = [...selected, ...Array(6 - selected.length).fill(0)];
 
   return (
     <ContainerStyle>
-      {myBall.map((ball) => {
+      {selected.pokemon.map((ball) => {
         if (ball == 0) {
           return (
             <DivStyle key={crypto.randomUUID()}>
