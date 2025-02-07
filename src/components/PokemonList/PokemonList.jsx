@@ -28,6 +28,7 @@ const Container = styled.div`
   height: auto;
   margin: 40px auto 0;
   background-color: rgb(248, 248, 248);
+  padding: 30px 0;
   border-radius: 10px;
   overflow: hidden;
 `;

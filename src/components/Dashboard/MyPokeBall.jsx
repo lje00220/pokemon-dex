@@ -4,30 +4,41 @@ import { useSelector } from "react-redux";
 
 const MyPokeBall = () => {
   const selected = useSelector((state) => state.pokemon);
-  // const myBall = [...selected, ...Array(6 - selected.length).fill(0)];
+  const myBall = [
+    ...selected.pokemon,
+    ...Array(6 - selected.pokemon.length).fill("ball"),
+  ];
 
   return (
     <ContainerStyle>
-      {selected.pokemon.map((ball) => {
-        if (ball == 0) {
-          return (
-            <DivStyle key={crypto.randomUUID()}>
+      {myBall.map((ball) => (
+        <WrapperStyle key={crypto.randomUUID()}>
+          {ball === "ball" ? (
+            <DivStyle>
               <BallStyle src="src/assets/Poke_Ball.webp" alt="" />
             </DivStyle>
-          );
-        } else {
-          return <PokemonCard key={ball.id} card={ball} btn="deleted" />;
-        }
-      })}
+          ) : (
+            <PokemonCard card={ball} btn="deleted" />
+          )}
+        </WrapperStyle>
+      ))}
     </ContainerStyle>
   );
 };
 
-const BallStyle = styled.img`
+const WrapperStyle = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 150px;
+  height: auto;
+`;
+
+const BallStyle = styled.img`
   width: 60px;
   height: 60px;
-  margin: 20px auto; // 간격 하드코딩 수정하기
+  object-fit: contain;
 `;
 const DivStyle = styled.div`
   background-color: white;
@@ -35,38 +46,18 @@ const DivStyle = styled.div`
   height: 120px;
   border: 2px dashed rgb(201, 201, 201);
   border-radius: 10px;
-  margin: 0 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ContainerStyle = styled.div`
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  height: auto;
 `;
 
 export default MyPokeBall;
-
-// const CardStyle = styled.div`
-//   width: 120px;
-//   height: 200px;
-//   background-color: white;
-//   border-radius: 10px;
-//   margin: 20px auto;
-//   box-shadow: 0px 3px 3px #d8d8d8;
-//   text-align: center;
-// `;
-// const PStyle = styled.p`
-//   font-size: 13px;
-//   color: grey;
-// `;
-
-// const ImgStyle = styled.img`
-//   width: 60%;
-//   height: 40%;
-//   margin: 10px 0;
-// `;
-
-// const NameStyle = styled.div`
-//   font-size: 15px;
-//   font-weight: bold;
-//   margin-top: 5px;
-// `;
