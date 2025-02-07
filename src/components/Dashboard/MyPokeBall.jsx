@@ -1,6 +1,6 @@
-import styled from "styled-components";
 import { PokemonCard } from "../PokemonList/PokemonCard";
 import { useSelector } from "react-redux";
+import S from "./MyPokeBall.style";
 
 const MyPokeBall = () => {
   const selected = useSelector((state) => state.pokemon);
@@ -10,54 +10,20 @@ const MyPokeBall = () => {
   ];
 
   return (
-    <ContainerStyle>
+    <S.PokeballContainer>
       {myBall.map((ball) => (
-        <WrapperStyle key={crypto.randomUUID()}>
+        <S.PokeballWrapper key={crypto.randomUUID()}>
           {ball === "ball" ? (
-            <DivStyle>
-              <BallStyle src="src/assets/Poke_Ball.webp" alt="" />
-            </DivStyle>
+            <S.PokeballDiv>
+              <S.PokeballImg src="src/assets/Poke_Ball.webp" alt="" />
+            </S.PokeballDiv>
           ) : (
             <PokemonCard card={ball} btn="deleted" />
           )}
-        </WrapperStyle>
+        </S.PokeballWrapper>
       ))}
-    </ContainerStyle>
+    </S.PokeballContainer>
   );
 };
-
-const WrapperStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 150px;
-  height: auto;
-`;
-
-const BallStyle = styled.img`
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-`;
-const DivStyle = styled.div`
-  background-color: white;
-  width: 120px;
-  height: 120px;
-  border: 2px dashed rgb(201, 201, 201);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ContainerStyle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 30px;
-  height: auto;
-`;
 
 export default MyPokeBall;
