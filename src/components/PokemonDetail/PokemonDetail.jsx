@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import MOCK_DATA from "../PokemonList/mockData";
-import styled from "styled-components";
-import AddButton from "../PokemonList/AddButton";
+import MOCK_DATA from "../../assets/mockData";
+import Button from "../common/Button/Button";
+import S from "./PokemonDetail.style";
 
 const PokemonDetail = () => {
   const location = useLocation();
@@ -12,51 +12,19 @@ const PokemonDetail = () => {
   const targetPokemon = MOCK_DATA.find((card) => card.id == targetId);
 
   return (
-    <ContainerStyle>
-      <ImgStyle src={targetPokemon.img_url} alt="" />
-      <NameStyle>{targetPokemon.korean_name}</NameStyle>
-      <PStyle>타입: {targetPokemon.types}</PStyle>
-      <PStyle>{targetPokemon.description}</PStyle>
-      <AddButton card={targetPokemon} type="added" />
-      <BtnStyle onClick={() => navigator("/dex")}>뒤로 가기</BtnStyle>
-    </ContainerStyle>
+    <S.DetailContainer>
+      <S.DetailImage src={targetPokemon.img_url} alt="" />
+      <S.DetailInformation color="red" size="20px" weight="bold">
+        {targetPokemon.korean_name}
+      </S.DetailInformation>
+      <S.DetailInformation>타입: {targetPokemon.types}</S.DetailInformation>
+      <S.DetailInformation>{targetPokemon.description}</S.DetailInformation>
+      <Button card={targetPokemon} />
+      <S.GoDexFromDetail onClick={() => navigator("/dex")}>
+        뒤로 가기
+      </S.GoDexFromDetail>
+    </S.DetailContainer>
   );
 };
-
-const PStyle = styled.p`
-  margin-top: 30px;
-`;
-
-const ImgStyle = styled.img`
-  width: 200px;
-  height: 200px;
-`;
-
-const ContainerStyle = styled.div`
-  width: 60%;
-  height: 100vh;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const NameStyle = styled.div`
-  color: red;
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 20px;
-`;
-
-const BtnStyle = styled.button`
-  width: 100px;
-  height: 40px;
-  border: none;
-  font-size: 15px;
-  margin-top: 30px;
-  border-radius: 10px;
-  background-color: #f1f1f1;
-`;
 
 export default PokemonDetail;
