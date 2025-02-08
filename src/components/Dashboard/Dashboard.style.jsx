@@ -7,8 +7,9 @@ S.DashboardContainer = styled.div`
   flex-direction: column;
   width: 85%;
   height: auto;
-  background-color: rgb(248, 248, 248);
+  background: #eff6fd;
   border-radius: 10px;
+  border: 10px solid #89b5f2;
   margin: 0 auto;
   overflow: visible;
   flex-grow: 1;
@@ -17,8 +18,9 @@ S.DashboardContainer = styled.div`
 `;
 
 S.DashboardTitle = styled.h2`
+  font-size: 35px;
   margin: 30px auto;
-  color: red;
+  color: #3d1830;
 `;
 
 export default S;

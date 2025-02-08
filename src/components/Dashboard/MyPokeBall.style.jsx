@@ -21,10 +21,10 @@ S.PokeballWrapper = styled.div`
 `;
 
 S.PokeballDiv = styled.div`
-  background-color: white;
+  background-color: #fbfbfb;
   width: 120px;
   height: 120px;
-  border: 2px dashed rgb(201, 201, 201);
+  border: 2px dashed #64b5f6;
   border-radius: 10px;
   display: flex;
   justify-content: center;

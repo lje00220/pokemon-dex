@@ -1,23 +1,19 @@
+import styled from "styled-components";
 import { Dashboard } from "../components/Dashboard/Dashboard";
 import { PokemonList } from "../components/PokemonList/PokemonList";
 
 const Dex = () => {
-  // // 로컬스토리지 초기값
-  // const [selected, setSelected] = useState(
-  //   JSON.parse(localStorage.getItem("pokemon")) || []
-  // );
-
-  // // 로컬스토리지
-  // useEffect(() => {
-  //   localStorage.setItem("pokemon", JSON.stringify(selected));
-  // }, [selected]);
-
   return (
-    <>
+    <Container>
       <Dashboard />
       <PokemonList />
-    </>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  background: #f0f4f8;
+  margin: 0;
+  padding: 0;
+`;
 export default Dex;

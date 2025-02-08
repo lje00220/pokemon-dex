@@ -18,7 +18,7 @@ const MyPokeBall = () => {
               <S.PokeballImg src="src/assets/Poke_Ball.webp" alt="" />
             </S.PokeballDiv>
           ) : (
-            <PokemonCard card={ball} btn="deleted" />
+            <PokemonCard card={ball} />
           )}
         </S.PokeballWrapper>
       ))}

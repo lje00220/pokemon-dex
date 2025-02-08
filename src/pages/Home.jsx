@@ -28,9 +28,9 @@ const ImgStyle = styled.img`
 const BtnStyle = styled.button`
   background-color: red;
   border: none;
-  width: 190px;
+  width: 210px;
   height: 40px;
-  color: white;
+  color: #fbfbfb;
   border-radius: 5px;
   font-size: 18px;
   margin-top: 30px;

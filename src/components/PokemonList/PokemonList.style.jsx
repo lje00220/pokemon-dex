@@ -6,7 +6,7 @@ S.ListContainer = styled.div`
   width: 85%;
   height: auto;
   margin: 40px auto 0;
-  background-color: rgb(248, 248, 248);
+  background-color: #f4f9ff;
   padding: 30px 0;
   border-radius: 10px;
   overflow: hidden;
@@ -15,6 +15,7 @@ S.ListContainer = styled.div`
   align-items: center;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  border: 10px solid #89b5f2;
   grid-gap: 20px;
 `;
 

@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import MOCK_DATA from "../PokemonList/mockData";
-import AddButton from "../PokemonList/AddButton";
+import MOCK_DATA from "../../assets/mockData";
+import Button from "../PokemonList/Button";
 import S from "./PokemonDetail.style";
 
 const PokemonDetail = () => {
@@ -19,7 +19,7 @@ const PokemonDetail = () => {
       </S.DetailInformation>
       <S.DetailInformation>타입: {targetPokemon.types}</S.DetailInformation>
       <S.DetailInformation>{targetPokemon.description}</S.DetailInformation>
-      <AddButton card={targetPokemon} type="added" />
+      <Button card={targetPokemon} />
       <S.GoDexBtn onClick={() => navigator("/dex")}>뒤로 가기</S.GoDexBtn>
     </S.DetailContainer>
   );
