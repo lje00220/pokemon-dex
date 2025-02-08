@@ -1,14 +1,13 @@
-import { useDispatch } from "react-redux";
-import { addPokemon, deletePokemon } from "../../redux/slices/pokemon";
+import { useDispatch, useSelector } from "react-redux";
+import { addPokemon, deletePokemon } from "../../../redux/slices/pokemon";
 import S from "./Button.style";
-import { useSelector } from "react-redux";
 
 const AddButton = ({ card }) => {
   const dispatch = useDispatch();
-  const selected = useSelector((state) => state.pokemon);
+  const selectedPokemon = useSelector((state) => state.pokemon);
 
   let btnType = "added";
-  selected.pokemon.forEach((x) => {
+  selectedPokemon.pokemon.forEach((x) => {
     if (x.id == card.id) {
       btnType = "deleted";
     }

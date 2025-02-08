@@ -1,4 +1,4 @@
-import { PokemonCard } from "./PokemonCard";
+import { PokemonCard } from "../common/Card/PokemonCard";
 import MOCK_DATA from "../../assets/mockData";
 import S from "./PokemonList.style";
 

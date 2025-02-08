@@ -1,12 +1,12 @@
-import { PokemonCard } from "../PokemonList/PokemonCard";
+import { PokemonCard } from "../common/Card/PokemonCard";
 import { useSelector } from "react-redux";
 import S from "./MyPokeBall.style";
 
 const MyPokeBall = () => {
-  const selected = useSelector((state) => state.pokemon);
+  const selectedPokemon = useSelector((state) => state.pokemon);
   const myBall = [
-    ...selected.pokemon,
-    ...Array(6 - selected.pokemon.length).fill("ball"),
+    ...selectedPokemon.pokemon,
+    ...Array(6 - selectedPokemon.pokemon.length).fill("ball"),
   ];
 
   return (

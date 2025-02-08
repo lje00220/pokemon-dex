@@ -1,39 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import S from "./Home.style";
 
 const Home = () => {
   const navigator = useNavigate();
   return (
-    <DivStyle>
-      <ImgStyle src="src/assets/International_Pokémon_logo.png" alt="" />
-      <BtnStyle onClick={() => navigator("/dex")}>
+    <S.HomeContainer>
+      <S.HomeImg src="src/assets/International_Pokémon_logo.png" alt="" />
+      <S.GoDexFromHome onClick={() => navigator("/dex")}>
         포켓몬 도감 시작하기
-      </BtnStyle>
-    </DivStyle>
+      </S.GoDexFromHome>
+    </S.HomeContainer>
   );
 };
-
-const DivStyle = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ImgStyle = styled.img`
-  width: 40%;
-`;
-
-const BtnStyle = styled.button`
-  background-color: red;
-  border: none;
-  width: 210px;
-  height: 40px;
-  color: #fbfbfb;
-  border-radius: 5px;
-  font-size: 18px;
-  margin-top: 30px;
-`;
 
 export default Home;

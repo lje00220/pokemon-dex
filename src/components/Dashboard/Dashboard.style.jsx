@@ -10,7 +10,7 @@ S.DashboardContainer = styled.div`
   background: #eff6fd;
   border-radius: 10px;
   border: 10px solid #89b5f2;
-  margin: 0 auto;
+  margin: 30px auto;
   overflow: visible;
   flex-grow: 1;
   padding: 20px 0;
