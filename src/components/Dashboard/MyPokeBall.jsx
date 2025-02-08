@@ -1,6 +1,7 @@
 import { PokemonCard } from "../common/Card/PokemonCard";
 import { useSelector } from "react-redux";
 import S from "./MyPokeBall.style";
+import ballImg from "../../assets/images/Poke_Ball.webp";
 
 const MyPokeBall = () => {
   const selectedPokemon = useSelector((state) => state.pokemon);
@@ -15,7 +16,7 @@ const MyPokeBall = () => {
         <S.PokeballWrapper key={crypto.randomUUID()}>
           {ball === "ball" ? (
             <S.PokeballDiv>
-              <S.PokeballImg src="src/assets/Poke_Ball.webp" alt="" />
+              <S.PokeballImg src={ballImg} alt="" />
             </S.PokeballDiv>
           ) : (
             <PokemonCard card={ball} />
