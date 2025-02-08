@@ -3,6 +3,7 @@ import styled from "styled-components";
 const S = {};
 
 S.Button = styled.button`
+  font-family: "DungGeunMo";
   background-color: ${(props) => props.color};
   color: #fbfbfb;
   border: none;
