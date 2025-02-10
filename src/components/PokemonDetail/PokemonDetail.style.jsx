@@ -31,6 +31,7 @@ S.DetailContainer = styled.div`
 `;
 
 S.GoDexFromDetail = styled.button`
+  font-family: "DungGeunMo";
   width: 100px;
   height: 40px;
   border: none;
@@ -38,6 +39,10 @@ S.GoDexFromDetail = styled.button`
   margin-top: 10px;
   border-radius: 10px;
   background-color: #dcdbdb;
+  transition: all 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default S;

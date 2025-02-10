@@ -14,7 +14,7 @@ S.Button = styled.button`
   height: 25px;
   border-radius: 7px;
   margin: 5px 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   &:hover {
     transform: scale(1.1);
   }

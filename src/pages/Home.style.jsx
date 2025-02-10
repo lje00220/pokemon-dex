@@ -28,6 +28,10 @@ S.GoDexFromHome = styled.button`
   border-radius: 5px;
   font-size: 18px;
   margin-top: 30px;
+  transition: all 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default S;
