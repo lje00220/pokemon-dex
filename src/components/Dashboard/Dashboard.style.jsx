@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+/**
+ * 대시보드 스타일
+ */
+
 const S = {};
 
 S.DashboardContainer = styled.div`

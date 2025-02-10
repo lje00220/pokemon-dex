@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+/**
+ * 포켓몬 상세페이지 스타일
+ */
+
 const S = {};
 
 S.DetailInformation = styled.p`

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+/**
+ * 포켓몬 카드 스타일
+ */
+
 const S = {};
 
 S.CardContainer = styled.div`

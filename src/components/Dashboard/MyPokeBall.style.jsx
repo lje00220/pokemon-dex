@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+/**
+ * 포켓볼 컨테이너 스타일
+ */
+
 const S = {};
 
 S.PokeballContainer = styled.div`

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+/**
+ * 홈 스타일
+ */
+
 const S = {};
 
 S.HomeContainer = styled.div`
@@ -15,6 +19,7 @@ S.HomeImg = styled.img`
 `;
 
 S.GoDexFromHome = styled.button`
+  font-family: "DungGeunMo";
   background-color: #f88379;
   border: none;
   width: 210px;

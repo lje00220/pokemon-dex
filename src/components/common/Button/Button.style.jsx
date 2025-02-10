@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+/**
+ * 버튼 스타일
+ */
 const S = {};
 
 S.Button = styled.button`

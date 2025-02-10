@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+/**
+ * 포켓몬 리스트 스타일
+ */
+
 const S = {};
 
 S.ListContainer = styled.div`
